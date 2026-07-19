@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kevin Store - Top Up Roblox</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+            min-height: 100vh;
+            padding: 20px 10px;
+        }
+
+        /* LINK NOMOR WA YANG BISA DITEK */
+        .link-wa {
+            color: #166534;
+            font-weight: bold;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+        .link-wa:hover {
+            color: #15803d;
+            text-decoration: underline;
+        }
+        .link-wa.putih {
+            color: white;
+        }
+        .link-wa.putih:hover {
+            color: #bbf7d0;
+        }
+
+        /* HALAMAN DAFTAR PERTAMA */
+        .halaman-daftar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 99999;
+            padding: 20px;
+        }
+        .kotak-daftar {
+            background: white;
+            padding: 30px 25px;
+            border-radius: 20px;
+            width: 100%;
+            max-width: 400px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+        }
+        .kotak-daftar h2 {
+            text-align: center;
+            color: #166534;
+            margin-bottom: 20px;
+        }
+        .kotak-daftar p {
+            text-align: center;
+            color: #15803d;
+            margin-bottom: 20px;
+            font-size: 0.95em;
+        }
+        .btn-masuk {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1em;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        .btn-masuk:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(34, 197, 94, 0.4);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: none;
+        }
+
+        header {
+            text-align: center;
+            padding: 30px 0;
+            color: white;
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        header p {
+            font-size: 1.1em;
+            opacity: 0.95;
+        }
+
+        .topup-section {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 25px 20px;
+            margin-top: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .section-title {
+            font-size: 1.8em;
+            color: #166534;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+
+        .input-group {
+            margin-bottom: 22px;
+            position: relative;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 10px;
+            color: #15803d;
+            font-weight: 600;
+            font-size: 1.05em;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 14px 45px 14px 14px;
+            border: 2px solid #bbf7d0;
+            border-radius: 10px;
+            font-size: 1em;
+            transition: all 0.3s;
+            background: #fff;
+        }
+
+        .input-group input:focus {
+            outline: none;
+            border-color: #22c55e;
+            box-shadow: 0 0 10px rgba(34, 197, 94, 0.3);
+        }
+
+        .btn-lihat {
+            position: absolute;
+            right: 12px;
+            bottom: 14px;
+            background: none;
+            border: none;
+            font-size: 1.3em;
+            cursor: pointer;
+            color: #16a34a;
+        }
+
+        .pesan-salah {
+            margin-top: 6px;
+            color: #dc2626;
+            font-size: 0.9em;
+            font-weight: 500;
+            display: none;
+        }
+
+        .harga-sekarang {
+            margin-top: 8px;
+            font-weight: bold;
+            color: #16a34a;
+            font-size: 1.1em;
+        }
+
+        .mode-pilihan {
+            display: flex; gap: 15px; margin-bottom: 25px;
+        }
+        .mode-btn {
+            flex: 1; padding: 12px; border: 2px solid #bbf7d0; border-radius: 10px;
+            text-align: center; cursor: pointer; transition: all 0.3s; font-weight: 600;
+            color: #166534;
+        }
+        .mode-btn.aktif {
+            border-color: #22c55e; background: #dcfce7; color: #15803d;
+        }
+
+        .robux-packages {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .package-card {
+            background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+            border-radius: 15px;
+            padding: 20px 15px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .package-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(22, 163, 74, 0.3);
+        }
+
+        .package-card.selected {
+            background: linear-gradient(135deg, #15803d 0%, #166534 100%);
+            transform: scale(1.03);
+            box-shadow: 0 15px 35px rgba(22, 101, 52, 0.4);
+        }
+
+        .robux-icon {
+            font-size: 2.5em;
+            margin-bottom: 8px;
+        }
+
+        .robux-amount {
+            font-size: 1.6em;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .robux-price {
+            font-size: 1.1em;
+            opacity: 0.95;
+        }
+
+        .bonus-badge {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            background: #fef08a;
+            color: #166534;
+            padding: 4px 8px;
+            border-radius: 15px;
+            font-size: 0.75em;
+            font-weight: bold;
+        }
+
+        .payment-methods {
+            margin: 25px 0;
+        }
+
+        .payment-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 12px;
+            margin-top: 12px;
+        }
+
+        .payment-option {
+            background: #f0fdf4;
+            border: 2px solid #bbf7d0;
+            border-radius: 10px;
+            padding: 15px 10px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            color: #166534;
+        }
+
+        .payment-option:hover {
+            border-color: #22c55e;
+            background: #dcfce7;
+        }
+
+        .payment-option.selected {
+            border-color: #16a34a;
+            background: #bbf7d0;
+            box-shadow: 0 0 12px rgba(34, 197, 94, 0.25);
+        }
+
+        .payment-option div:first-child {
+            font-size: 2.2em;
+            margin-bottom: 6px;
+        }
+
+        .btn-topup {
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.2em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 15px;
+        }
+
+        .btn-topup:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(34, 197, 94, 0.4);
+        }
+
+        .order-summary {
+            background: #f0fdf4;
+            border-radius: 15px;
+            padding: 20px;
+            margin-top: 25px;
+            display: none;
+            border: 1px solid #bbf7d0;
+        }
+
+        .order-summary.show {
+            display: block;
+            animation: slideIn 0.3s ease-out;
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(-15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .balasan-otomatis {
+            background: #fff7ed;
+            border: 2px solid #f97316;
+            border-radius: 15px;
+            padding: 15px;
+            margin-top: 15px;
+        }
+        .balasan-otomatis h4 {
+            color: #c2410c;
+            margin-bottom: 8px;
+        }
+        .balasan-otomatis p {
+            color: #9a3412;
+            font-size: 0.95em;
+            line-height: 1.6;
+        }
+
+        .summary-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid #bbf7d0;
+            font-size: 0.95em;
+            color: #166534;
+        }
+
+        .summary-item:last-child {
+            border-bottom: none;
+            font-weight: bold;
+            font-size: 1.1em;
+            color: #15803d;
+            padding-top: 8px;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 35px;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 20px 15px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .feature-icon {
+            font-size: 2.2em;
+            margin-bottom: 12px;
+        }
+
+        .feature-card h3 {
+            color: #166534;
+            margin-bottom: 8px;
+            font-size: 1.1em;
+        }
+
+        .feature-card p {
+            color: #15803d;
+            font-size: 0.9em;
+        }
+
+        footer {
+            text-align: center;
+            padding: 25px 15px;
+            color: white;
+            margin-top: 35px;
+            font-size: 0.95em;
+        }
+
+        .notification {
+            position: fixed;
+            top: 15px;
+            right: 15px;
+            left: 15px;
+            max-width: 400px;
+            margin: 0 auto;
+            background: white;
+            padding: 15px 20px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+            display: none;
+            z-index: 9999;
+            animation: geserMasuk 0.3s ease-out;
+            font-weight: 500;
+        }
+
+        @keyframes geserMasuk {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .notification.success { border-left: 5px solid #22c55e; color: #166534; }
+        .notification.error { border-left: 5px solid #ef4444; color: #991b1b; }
+
+        @media (max-width: 480px) {
+            header h1 { font-size: 2em; }
+            .robux-packages { grid-template-columns: repeat(2, 1fr); }
+            .payment-grid { grid-template-columns: repeat(3, 1fr); }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HALAMAN PENDAFTARAN PERTAMA -->
+    <div class="halaman-daftar" id="layarDaftar">
+        <div class="kotak-daftar">
+            <h2>👋 Selamat Datang di KEVIN STORE</h2>
+            <p>Silakan isi nama dan nomor HP untuk bisa belanja</p>
+            
+            <div class="input-group">
+                <label>Nama Kamu</label>
+                <input type="text" id="namaPembeli" placeholder="Masukkan nama lengkap" required>
+                <div class="pesan-salah" id="pesanNama">❌ Nama belum diisi!</div>
+            </div>
+
+            <div class="input-group">
+                <label>Nomor Telepon / WhatsApp</label>
+                <input type="tel" id="noHp" placeholder="Contoh: 0812xxxxxxx" required>
+                <div class="pesan-salah" id="pesanHp">❌ Nomor HP belum diisi!</div>
+            </div>
+
+            <button class="btn-masuk" onclick="masukToko()">✅ MASUK KE TOKO</button>
+        </div>
+    </div>
+
+    <!-- ISI UTAMA TOKO -->
+    <div class="container" id="isiToko">
+        <header>
+            <h1>🎮 KEVIN STORE</h1>
+            <p>Top Up Robux Terpercaya & Tercepat!</p>
+            <p style="margin-top:10px;">📞 Hubungi Kami: <a href="https://wa.me/62882000402594" class="link-wa putih" target="_blank">0882-0004-02594</a></p>
+        </header>
+
+        <div class="topup-section">
+            <h2 class="section-title">✨ Top Up Roblox</h2>
+
+            <div class="input-group">
+                <label>Nama Pembeli</label>
+                <input type="text" id="namaPembeliTampil" readonly style="background:#f0fdf4;">
+            </div>
+
+            <div class="input-group">
+                <label>No. WhatsApp</label>
+                <input type="tel" id="noHpTampil" readonly style="background:#f0fdf4;">
+            </div>
+
+            <div class="input-group">
+                <label for="username">Username Roblox</label>
+                <input type="text" id="username" placeholder="Masukkan username kamu" required>
+                <div class="pesan-salah" id="pesanUser">❌ Username Roblox salah atau belum diisi!</div>
+            </div>
+
+            <div class="input-group">
+                <label for="sandi">Sandi Akun Roblox</label>
+                <input type="password" id="sandi" placeholder="Masukkan sandi akun" required>
+                <button type="button" class="btn-lihat" onclick="lihatSandi()">👁️</button>
+                <div class="pesan-salah" id="pesanSandi">❌ Sandi salah atau belum diisi!</div>
+            </div>
+
+            <div class="input-group">
+                <label>Pilih Kecepatan Proses</label>
+                <div class="mode-pilihan">
+                    <div class="mode-btn aktif" data-mode="cepat" onclick="pilihMode('cepat')">⚡ MODE CEPAT</div>
+                    <div class="mode-btn" data-mode="lambat" onclick="pilihMode('lambat')">🐢 MODE LAMBAT</div>
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label>Ketik Jumlah Robux Sendiri <small>(1 Robux = Rp 5)</small></label>
+                <input type="number" id="robuxManual" placeholder="Contoh: 500, 2000, 10000" oninput="hitungManual(this.value)">
+                <div class="harga-sekarang" id="hargaLangsung">-</div>
+            </div>
+
+            <div class="input-group">
+                <label>Atau Pilih Paket Di Bawah Ini</label>
+                <div class="robux-packages">
+                    <div class="package-card" data-amount="400" data-price="2000">
+                        <div class="robux-icon">💎</div>
+                        <div class="robux-amount">400 R$</div>
+                        <div class="robux-price">Rp 2.000</div>
+                    </div>
+                    <div class="package-card" data-amount="800" data-price="4000">
+                        <span class="bonus-badge">POPULER</span>
+                        <div class="robux-icon">💎</div>
+                        <div class="robux-amount">800 R$</div>
+                        <div class="robux-price">Rp 4.000</div>
+                    </div>
+                    <div class="package-card" data-amount="1700" data-price="8500">
+                        <span class="bonus-badge">HEMAT</span>
+                        <div class="robux-icon">💎</div>
+                        <div class="robux-amount">1.700 R$</div>
+                        <div class="robux-price">Rp 8.500</div>
+                    </div>
+                    <div class="package-card" data-amount="4500" data-price="22500">
+                        <span class="bonus-badge">BAGUS</span>
+                        <div class="robux-icon">💎</div>
+                        <div class="robux-amount">4.500 R$</div>
+                        <div class="robux-price">Rp 22.500</div>
+                    </div>
+                    <div class="package-card" data-amount="10000" data-price="50000">
+                        <span class="bonus-badge">MEGA</span>
+                        <div class="robux-icon">💎</div>
+                        <div class="robux-amount">10.000 R$</div>
+                        <div class="robux-price">Rp 50.000</div>
+                    </div>
+                    <div class="package-card" data-amount="22500" data-price="112500">
+                        <span class="bonus-badge">TERBAIK</span>
+                        <div class="robux-icon">💎</div>
+                        <div class="robux-amount">22.500 R$</div>
+                        <div class="robux-price">Rp 112.500</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="payment-methods">
+                <label>Metode Pembayaran</label>
+                <div class="payment-grid">
+                    <div class="payment-option" data-method="GoPay">
+                        <div>💚</div>
+                        <div>GoPay</div>
+                    </div>
+                    <div class="payment-option" data-method="OVO">
+                        <div>💜</div>
+                        <div>OVO</div>
+                    </div>
+                    <div class="payment-option" data-method="DANA">
+                        <div>💙</div>
+                        <div>DANA</div>
+                    </div>
+                    <div class="payment-option" data-method="BCA">
+                        <div>🏦</div>
+                        <div>BCA</div>
+                    </div>
+                    <div class="payment-option" data-method="Mandiri">
+                        <div>🏛️</div>
+                        <div>Mandiri</div>
+                    </div>
+                    <div class="payment-option" data-method="QRIS">
+                        <div>📱</div>
+                        <div>QRIS</div>
+                    </div>
+                </div>
+            </div>
+
+            <button class="btn-topup" onclick="processTopUp()">🚀 KIRIM PESANAN KE PENJUAL</button>
+
+            <div class="order-summary" id="orderSummary">
+                <h3 style="margin-bottom:15px; color:#166534; font-size:1.2em;">📋 Ringkasan Pesanan</h3>
+                <div class="summary-item">
+                    <span>Nama:</span>
+                    <span id="sumNama">-</span>
+                </div>
+                <div class="summary-item">
+                    <span>No HP:</span>
+                    <span id="sumHp">-</span>
+                </div>
+                <div class="summary-item">
+                    <span>Username:</span>
+                    <span id="summaryUsername">-</span>
+                </div>
+                <div class="summary-item">
+                    <span>Kecepatan:</span>
+                    <span id="summaryMode">-</span>
+                </div>
+                <div class="summary-item">
+                    <span>Jumlah Robux:</span>
+                    <span id="summaryPackage">-</span>
+                </div>
+                <div class="summary-item">
+                    <span>Bayar Pakai:</span>
+                    <span id="summaryPayment">-</span>
+                </div>
+                <div class="summary-item">
+                    <span>Total Bayar:</span>
+                    <span id="summaryTotal">-</span>
+                </div>
+
+                <!-- INFO OTOMATIS KE PEMBELI -->
+                <div class="balasan-otomatis">
+                    <h4>✅ INFO PEMBAYARAN DARI PENJUAL</h4>
+                    <p>Terima kasih sudah pesan di Kevin Store!<br><br>
+                    📞 Hubungi Penjual: <a href="https://wa.me/62882000402594" class="link-wa" target="_blank"><strong>0882-0004-02594</strong></a><br><br>
+                    Silakan bayar ke rekening berikut:<br>
+                    🏦 BCA : 123-456-7890 a.n
